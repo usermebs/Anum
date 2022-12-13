@@ -23,7 +23,7 @@ def approx(m1,m2,k1,k2,w, ci=[0,0,0,0],limit=(0,100,1000),solbreak=False):
     if solbreak : return res , X1 , X2
     else : return res
 
-def graphes_de( args* ):
+def graphes_de( *args ):
     """ cette fonction permet de tracer les graphes x1(t) 
     et x2(t) simultanement pour differents cas """
     t=np.linspace(0,100,1000)
@@ -38,14 +38,28 @@ def graphes_de( args* ):
     plt.grid()
     plt.show()
     
+def trajectoire_de(*args):
+    t=np.linspace(0,100,1000)
+    plt.figure()
+    for i in range(len(args)):   
+        plt.plot(args[i][1],args[i][2],label='x_'+str(i)+'(t)')
+    plt.legend(loc='best')
+    plt.ylabel('trajectoire x(t)')
+    plt.xlabel('temps t')
+    plt.title('trajectoire du système ')
+    plt.grid()
+    plt.show()
+    
 #calcul l'approximation numérique pour les parametres données
-sol1=approx(1,1,1,1,0.5)
+sol1_0=approx(1,1,1,1,0.5)
+sol1_1=approx(1,1,1,1,0.5)
 sol2=approx(1,1,1,1,1)
 sol3=approx(1,1,1,1,1.5)
 sol4=approx(1,1,1,1,2)
 sol5=approx(1,1,1,1,2.5)
 #tracer le graphes de 
-graphes_de(sol1,sol2,sol3,sol4,sol5)
+#graphes_de(sol1,sol2,sol3,sol4,sol5)
+
 
 def Max1(m1,m2,k1,k2,w,y0=[0,0,0,0],limit=(0,100,300)):
     X1=approx(m1,m2,k1,k2,w,y0, limit, solbreak=True)[1]
