@@ -61,10 +61,18 @@ sol5=approx(1,1,1,1,2.5)
 #graphes_de(sol1,sol2,sol3,sol4,sol5)
 
 
-def Max1(m1,m2,k1,k2,w,y0=[0,0,0,0],limit=(0,100,300)):
+def Max1(m1,m2,k1,k2,w,y0=[0,0,0,0],limit=(0,100,1000)):
+    t=np.linspace(limit[0],limit[1],limt[2])
     X1=approx(m1,m2,k1,k2,w,y0, limit, solbreak=True)[1]
     return max(X1)
-
+    intervalles=[]
+    for i in range(len(t)-1):
+        if X1[i]*X1[i+1]<=0:
+            intervalles.append((t[i],t[i+1]))
+    someMax=[]
+    for j in range(len(intervalles)):
+        mj=approx(m1,m2,)
+            
 """def MaxSearch (m1,m2,k1,k2,precision=1e-4):
     f= lambda w : Max1(m1,m2,k1,k2,w)
     xu,xl = 0,100 # les intervalles adequats
